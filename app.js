@@ -76,7 +76,6 @@ function saveHeros(){ //map new array kudukum
 })
 // console.log(data);
 localStorage.setItem("heros",JSON.stringify(data));
-
 }
 
 // step-1 Add / edit Hero from form
@@ -278,7 +277,9 @@ document.querySelector("#searchName").addEventListener("input",function(e){
 function sortHeros(asc=true){
     // console.log(heros);
     //sort button la uparr true downarr false set pannanu
-    // heros.sort((sa,b) => asc ? a.powerLevel - b.p)
+    heros.sort((a,b) => asc ? a.powerLevel - b.powerLevel : b-powerLevel - a.powerLevel);
+    renderHeros();
+    saveHeros();
 }
 sortHeros();
 
