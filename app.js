@@ -35,7 +35,7 @@ function Hero (name,powerLevel,secretIdentity,category){
 }
 
 //step-2 Global variable
-let heros = [];
+var heros = [];
 let isEditing = false;
 let editIndex = null;
 
@@ -171,7 +171,7 @@ function renderHeros(filter=""){
                  <small>${hero.powerLevel}</small>
              </div>
              <div>
-                 <button class="btn btn-warning btn-sm" onClick ="editHero(${index})">Edit</button> 
+                 <button class="btn btn-warning btn-sm" onClick ="editHero(${index}) ">Edit</button> 
                  
                   <button class="btn btn-danger btn-sm" onClick ="deleteHero(${index})" >Delete</button>
              </div>
@@ -277,7 +277,9 @@ document.querySelector("#searchName").addEventListener("input",function(e){
 function sortHeros(asc=true){
     // console.log(heros);
     //sort button la uparr true downarr false set pannanu
-    heros.sort((a,b) => asc ? a.powerLevel - b.powerLevel : b-powerLevel - a.powerLevel);
+    heros.sort((a,b) => asc ? a.powerLevel - b.powerLevel : b.powerLevel - a.powerLevel);
+    isEditing = false;   // stale index avoid
+    editIndex = null;
     renderHeros();
     saveHeros();
 }
